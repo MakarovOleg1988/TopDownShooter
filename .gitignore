@@ -379,3 +379,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+Assets/Other Materials/Animation/Enemy/Zombi/DeathPlayer.anim
+Assets/Other Materials/Animation/Enemy/Zombi/Main Model Enemy Zombi.fbx
+Assets/Other Materials/Animation/Enemy/Zombi/Zombie Dying (1).fbx
+
