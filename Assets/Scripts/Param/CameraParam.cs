@@ -4,7 +4,7 @@ namespace TopDownShooter
 {
     public class CameraParam: MonoBehaviour
     {
-        [SerializeField, Range(1f, 20f), Tooltip("Скорость перемещения камеры")] 
+        [SerializeField, Range(2f, 20f), Tooltip("Скорость перемещения камеры")] 
         protected float _speedMovementCamera;
 
         [SerializeField, Range(1f, 40f), Tooltip("Скорость вращения камеры")] 

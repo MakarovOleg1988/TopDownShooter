@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TopDownShooter
 {
-    public class CameraController : CameraParam
+    public class CameraMovement : CameraParam
     {
         private void Start()
         {
@@ -13,6 +13,8 @@ namespace TopDownShooter
 
         private void LateUpdate()
         {
+            if (_target == null) return;
+
             transform.position = Vector3.Lerp(transform.position, _target.transform.position, _speedMovementCamera * Time.deltaTime);
         }
     }

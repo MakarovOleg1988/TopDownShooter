@@ -46,6 +46,60 @@ namespace TopDownShooter
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SimpleShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2b86419-e716-4f61-b205-97b28b2b4d8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AlternativeShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5aba828-c251-491f-86db-fa1e829aa455"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Active Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd253e64-515e-4772-95c4-7227f0764e30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a861015-edd8-42ec-be26-37669a39448c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""992b7198-d2bc-4177-889a-ef79c0640141"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActiveTasksMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""51a998cf-e46f-41dd-a453-89b340aa7da4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +168,72 @@ namespace TopDownShooter
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72056b17-0a7d-4213-9b88-1dee38c8aed5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SimpleShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d0ccf44-e3b4-46e3-847a-80e5eecb538b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AlternativeShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75dfd7ef-2438-4e20-980f-41e9ab2dbb8f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Active Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29fb2b96-1a8c-4762-b93c-9e832a0f4a9c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86af79bb-997d-4f83-9dbc-3089ce36e72a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a0ae26d-cdf6-424c-afce-f9568eef04f4"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveTasksMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +244,12 @@ namespace TopDownShooter
             m_NewActionMap = asset.FindActionMap("NewActionMap", throwIfNotFound: true);
             m_NewActionMap_Movement = m_NewActionMap.FindAction("Movement", throwIfNotFound: true);
             m_NewActionMap_MouseLook = m_NewActionMap.FindAction("MouseLook", throwIfNotFound: true);
+            m_NewActionMap_SimpleShoot = m_NewActionMap.FindAction("SimpleShoot", throwIfNotFound: true);
+            m_NewActionMap_AlternativeShoot = m_NewActionMap.FindAction("AlternativeShoot", throwIfNotFound: true);
+            m_NewActionMap_ActiveFlashlight = m_NewActionMap.FindAction("Active Flashlight", throwIfNotFound: true);
+            m_NewActionMap_ReloadGun = m_NewActionMap.FindAction("ReloadGun", throwIfNotFound: true);
+            m_NewActionMap_ChangeWeapon = m_NewActionMap.FindAction("ChangeWeapon", throwIfNotFound: true);
+            m_NewActionMap_ActiveTasksMenu = m_NewActionMap.FindAction("ActiveTasksMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -185,12 +311,24 @@ namespace TopDownShooter
         private INewActionMapActions m_NewActionMapActionsCallbackInterface;
         private readonly InputAction m_NewActionMap_Movement;
         private readonly InputAction m_NewActionMap_MouseLook;
+        private readonly InputAction m_NewActionMap_SimpleShoot;
+        private readonly InputAction m_NewActionMap_AlternativeShoot;
+        private readonly InputAction m_NewActionMap_ActiveFlashlight;
+        private readonly InputAction m_NewActionMap_ReloadGun;
+        private readonly InputAction m_NewActionMap_ChangeWeapon;
+        private readonly InputAction m_NewActionMap_ActiveTasksMenu;
         public struct NewActionMapActions
         {
             private @NewControls m_Wrapper;
             public NewActionMapActions(@NewControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_NewActionMap_Movement;
             public InputAction @MouseLook => m_Wrapper.m_NewActionMap_MouseLook;
+            public InputAction @SimpleShoot => m_Wrapper.m_NewActionMap_SimpleShoot;
+            public InputAction @AlternativeShoot => m_Wrapper.m_NewActionMap_AlternativeShoot;
+            public InputAction @ActiveFlashlight => m_Wrapper.m_NewActionMap_ActiveFlashlight;
+            public InputAction @ReloadGun => m_Wrapper.m_NewActionMap_ReloadGun;
+            public InputAction @ChangeWeapon => m_Wrapper.m_NewActionMap_ChangeWeapon;
+            public InputAction @ActiveTasksMenu => m_Wrapper.m_NewActionMap_ActiveTasksMenu;
             public InputActionMap Get() { return m_Wrapper.m_NewActionMap; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -206,6 +344,24 @@ namespace TopDownShooter
                     @MouseLook.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnMouseLook;
                     @MouseLook.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnMouseLook;
                     @MouseLook.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnMouseLook;
+                    @SimpleShoot.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnSimpleShoot;
+                    @SimpleShoot.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnSimpleShoot;
+                    @SimpleShoot.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnSimpleShoot;
+                    @AlternativeShoot.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnAlternativeShoot;
+                    @AlternativeShoot.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnAlternativeShoot;
+                    @AlternativeShoot.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnAlternativeShoot;
+                    @ActiveFlashlight.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveFlashlight;
+                    @ActiveFlashlight.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveFlashlight;
+                    @ActiveFlashlight.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveFlashlight;
+                    @ReloadGun.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnReloadGun;
+                    @ReloadGun.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnReloadGun;
+                    @ReloadGun.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnReloadGun;
+                    @ChangeWeapon.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnChangeWeapon;
+                    @ChangeWeapon.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnChangeWeapon;
+                    @ChangeWeapon.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnChangeWeapon;
+                    @ActiveTasksMenu.started -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveTasksMenu;
+                    @ActiveTasksMenu.performed -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveTasksMenu;
+                    @ActiveTasksMenu.canceled -= m_Wrapper.m_NewActionMapActionsCallbackInterface.OnActiveTasksMenu;
                 }
                 m_Wrapper.m_NewActionMapActionsCallbackInterface = instance;
                 if (instance != null)
@@ -216,6 +372,24 @@ namespace TopDownShooter
                     @MouseLook.started += instance.OnMouseLook;
                     @MouseLook.performed += instance.OnMouseLook;
                     @MouseLook.canceled += instance.OnMouseLook;
+                    @SimpleShoot.started += instance.OnSimpleShoot;
+                    @SimpleShoot.performed += instance.OnSimpleShoot;
+                    @SimpleShoot.canceled += instance.OnSimpleShoot;
+                    @AlternativeShoot.started += instance.OnAlternativeShoot;
+                    @AlternativeShoot.performed += instance.OnAlternativeShoot;
+                    @AlternativeShoot.canceled += instance.OnAlternativeShoot;
+                    @ActiveFlashlight.started += instance.OnActiveFlashlight;
+                    @ActiveFlashlight.performed += instance.OnActiveFlashlight;
+                    @ActiveFlashlight.canceled += instance.OnActiveFlashlight;
+                    @ReloadGun.started += instance.OnReloadGun;
+                    @ReloadGun.performed += instance.OnReloadGun;
+                    @ReloadGun.canceled += instance.OnReloadGun;
+                    @ChangeWeapon.started += instance.OnChangeWeapon;
+                    @ChangeWeapon.performed += instance.OnChangeWeapon;
+                    @ChangeWeapon.canceled += instance.OnChangeWeapon;
+                    @ActiveTasksMenu.started += instance.OnActiveTasksMenu;
+                    @ActiveTasksMenu.performed += instance.OnActiveTasksMenu;
+                    @ActiveTasksMenu.canceled += instance.OnActiveTasksMenu;
                 }
             }
         }
@@ -224,6 +398,12 @@ namespace TopDownShooter
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnMouseLook(InputAction.CallbackContext context);
+            void OnSimpleShoot(InputAction.CallbackContext context);
+            void OnAlternativeShoot(InputAction.CallbackContext context);
+            void OnActiveFlashlight(InputAction.CallbackContext context);
+            void OnReloadGun(InputAction.CallbackContext context);
+            void OnChangeWeapon(InputAction.CallbackContext context);
+            void OnActiveTasksMenu(InputAction.CallbackContext context);
         }
     }
 }
