@@ -43,8 +43,6 @@ namespace TopDownShooter
             _poolRevolver = GetComponent<PoolForRevolverProjectile>();
             _poolRifle = GetComponent<PoolForRifleProjectile>();
 
-            _flashlight = GameObject.FindGameObjectWithTag("Flashlight");
-
             _playerController = GetComponent<PlayerController>();
             _anim = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();

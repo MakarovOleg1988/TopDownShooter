@@ -17,6 +17,8 @@ namespace TopDownShooter
         protected Transform[] _weapon;
 
         public Transform[] _targetFire;
+
+        [SerializeField]
         protected GameObject _flashlight;
 
         public bool FlashlightIsActive { get; set; } = false;
