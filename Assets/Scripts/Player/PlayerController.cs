@@ -33,6 +33,8 @@ namespace TopDownShooter
             MaxHealth = CurrentHealth;
             _healthBar.value = MaxHealth - CurrentHealth;
             _healthBar.maxValue = MaxHealth;
+            _currentHealthText.text = CurrentHealth.ToString();
+            _maxHealthText.text = MaxHealth.ToString();
 
             _currentCapacityClipRevolver = _maxCapacityClipRevolver;
             _currentCapacityClipRifle = _maxCapacityClipRifle;
@@ -149,8 +151,8 @@ namespace TopDownShooter
                 _weapon[0].localPosition = new Vector3(0.3f, -0.55f, -0.25f);
                 _weapon[0].localRotation = Quaternion.Euler(-180f, -75f, 185f);
 
-                _weapon[1].localPosition = new Vector3(-0.3f, 0.2f, 0.4f);
-                _weapon[1].localRotation = Quaternion.Euler(180f, 330f, 190f);
+                _weapon[1].localPosition = new Vector3(-0.3f, 0.15f, 0.5f);
+                _weapon[1].localRotation = Quaternion.Euler(185f, 330f, 190f);
                 _withRevolver = false;
             }
         }
@@ -213,6 +215,7 @@ namespace TopDownShooter
             if (CurrentHealth > 0)
             {
                 CurrentHealth--;
+                _currentHealthText.text = CurrentHealth.ToString();
                 _anim.SetTrigger("GetDamage");
                 _healthBar.value = MaxHealth - CurrentHealth;
             }

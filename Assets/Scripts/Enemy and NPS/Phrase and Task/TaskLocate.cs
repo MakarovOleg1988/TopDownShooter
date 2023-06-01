@@ -1,13 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TopDownShooter
 {
     public class TaskLocate : MonoBehaviour
     {
         private Camera _mainCamera;
-
-        [SerializeField]
         private Transform _parent;
 
         [SerializeField]
@@ -15,6 +14,9 @@ namespace TopDownShooter
 
         [SerializeField]
         private TextMeshProUGUI _textTasks;
+
+        [SerializeField]
+        private Image _taskImage;
 
         [SerializeField]
         private GameObject[] _labelTasks;
@@ -33,6 +35,7 @@ namespace TopDownShooter
         private void Start()
         {
             _mainCamera = Camera.main;
+            _parent = GetComponentInParent<Transform>();
             _tasks = new string[_tasksData.tasks.Length];
 
             Phrase();
@@ -62,6 +65,7 @@ namespace TopDownShooter
             if (other.GetComponent<PlayerController>() && _isVillageChief == true)
             {
                 _textTasks.enabled = true;
+                _taskImage.enabled = false;
                 _textTasks.text = _tasks[0];
                 _labelTasks[0].SetActive(true);
             }

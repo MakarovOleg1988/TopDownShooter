@@ -66,6 +66,7 @@ namespace TopDownShooter
             
             if (other.GetComponent<Collider>())
             {
+                Debug.Log(other);
                 ReturnToPool();
             }
         }

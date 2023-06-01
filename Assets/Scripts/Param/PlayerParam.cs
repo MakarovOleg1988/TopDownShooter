@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,5 +42,11 @@ namespace TopDownShooter
 
         [SerializeField]
         protected GameObject _losePanel;
+
+        [SerializeField]
+        protected TextMeshProUGUI _currentHealthText;
+
+        [SerializeField]
+        protected TextMeshProUGUI _maxHealthText;
     }
 }
