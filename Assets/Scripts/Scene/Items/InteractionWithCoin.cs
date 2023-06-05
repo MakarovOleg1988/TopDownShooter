@@ -10,20 +10,17 @@ namespace TopDownShooter
         [SerializeField, Range(10, 50)]
         private int _maxCapacityCoininBox;
 
-        private int _coins = 0;
-        public int CoinValue 
-        {
-            get { return _coins; }
-            set { _coins = value; }
-        }
+        private PlayerParam _playerParam; 
 
         [SerializeField]
         private TextMeshProUGUI _coinValueText;
 
         private void Start()
         {
+            _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
+
             _rbCoin = GetComponent<Rigidbody>();
-            _coinValueText.text = CoinValue.ToString();
+            _coinValueText.text = _playerParam.CoinValue.ToString();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -31,8 +28,8 @@ namespace TopDownShooter
             if (collision.gameObject.GetComponent<PlayerController>())
             {
                 int randomCoin = Random.Range(1, _maxCapacityCoininBox);
-                CoinValue += randomCoin;
-                _coinValueText.text = CoinValue.ToString();
+                _playerParam.CoinValue += randomCoin;
+                _coinValueText.text = _playerParam.CoinValue.ToString();
                 ReturnToPool();
             }
         }

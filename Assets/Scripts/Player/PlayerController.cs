@@ -7,7 +7,7 @@ namespace TopDownShooter
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(PoolForRevolverProjectile))]
     [RequireComponent(typeof(PoolForRifleProjectile))]
-    public class PlayerController : PlayerParam, IEventManager
+    public class PlayerController : PlayerParam, IEventManager, IDamageAblePlayer
     {
         private PlayerController _playerController;
 
@@ -48,8 +48,6 @@ namespace TopDownShooter
             _playerController = GetComponent<PlayerController>();
             _anim = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
-
-            IEventManager._onSetDamagePlayer += GetDamage;
         }
 
         private void Update()
@@ -210,11 +208,11 @@ namespace TopDownShooter
             }
         }
 
-        private void GetDamage()
+        public void ApplyDamagePlayer(int damage)
         {
             if (CurrentHealth > 0)
             {
-                CurrentHealth--;
+                CurrentHealth -= damage;
                 _currentHealthText.text = CurrentHealth.ToString();
                 _anim.SetTrigger("GetDamage");
                 _healthBar.value = MaxHealth - CurrentHealth;

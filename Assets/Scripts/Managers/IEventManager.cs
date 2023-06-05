@@ -8,7 +8,6 @@ namespace TopDownShooter
         public static event Action _onSetShootRifle;
         public static event Action _onSetEmptyShootRevolver;
         public static event Action _onSetActiveFlashlight;
-        public static event Action _onSetDamagePlayer;
         public static event Action _onSetDamageEnemy;
         public static event Action _onSetReloadWeapon;
         public static event Action _onSetChangeWeapon;
@@ -31,11 +30,6 @@ namespace TopDownShooter
         public static void SendSetActiveFlashlight()
         {
             _onSetActiveFlashlight?.Invoke();
-        }
-
-        public static void SendSetDamagePlayer()
-        {
-            _onSetDamagePlayer?.Invoke();
         }
 
         public static void SendSetDamageEnemy()

@@ -48,5 +48,12 @@ namespace TopDownShooter
 
         [SerializeField]
         protected TextMeshProUGUI _maxHealthText;
+
+        private int _coins = 0;
+        public int CoinValue
+        {
+            get { return _coins; }
+            set { _coins = value; }
+        }
     }
 }
