@@ -56,14 +56,15 @@ namespace TopDownShooter
             }
         }
 
-
         public void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<IDamageAble>(out var enemy))
             {
                 enemy.ApplyDamage(_damage);
             }
-            
+
+
+
             if (other.GetComponent<Collider>())
             {
                 Debug.Log(other);

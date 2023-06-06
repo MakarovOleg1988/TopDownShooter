@@ -6,5 +6,6 @@ namespace TopDownShooter
     public class TasksData : ScriptableObject
     {
         public string[] tasks;
+        public string[] tasksDiscription;
     }
 }

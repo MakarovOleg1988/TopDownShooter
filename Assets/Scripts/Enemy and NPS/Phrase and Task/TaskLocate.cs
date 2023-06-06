@@ -24,7 +24,7 @@ namespace TopDownShooter
         [SerializeField]
         private TasksData _tasksData;
 
-        public string[] _tasks;
+        private string[] _tasksDiscription;
 
         public bool _isVillageChief;
         public bool _isÑemeteryÑaretaker;
@@ -36,9 +36,9 @@ namespace TopDownShooter
         {
             _mainCamera = Camera.main;
             _parent = GetComponentInParent<Transform>();
-            _tasks = new string[_tasksData.tasks.Length];
+            _tasksDiscription = new string[_tasksData.tasksDiscription.Length];
 
-            Phrase();
+            SetTask();
         }
 
         private void LateUpdate()
@@ -52,11 +52,16 @@ namespace TopDownShooter
             _canvas.transform.rotation = _mainCamera.transform.rotation;
         }
 
-        private void Phrase()
+        private void SetTask()
         {
-            for (int i = 0; i < _tasks.Length; i++)
+            for (int i = 0; i < _tasksDiscription.Length; i++)
             {
-                _tasks[i] = _tasksData.tasks[i];
+                _tasksDiscription[i] = _tasksData.tasksDiscription[i];
+            }
+
+            for (int i = 0; i < _tasksDiscription.Length; i++)
+            {
+                _labelTasks[i].GetComponentInChildren<Text>().text = _tasksData.tasks[i];
             }
         }
 
@@ -66,14 +71,15 @@ namespace TopDownShooter
             {
                 _textTasks.enabled = true;
                 _taskImage.enabled = false;
-                _textTasks.text = _tasks[0];
-                _labelTasks[0].SetActive(true);
+                _textTasks.text = _tasksDiscription[1];
+                _labelTasks[1].SetActive(true);
             }
             else if (other.GetComponent<PlayerController>() && _isÑemeteryÑaretaker == true)
             {
                 _textTasks.enabled = true;
-                _textTasks.text = _tasks[1];
-                _labelTasks[1].SetActive(true);
+                _taskImage.enabled = false;
+                _textTasks.text = _tasksDiscription[2];
+                _labelTasks[2].SetActive(true);
             }
         }
 

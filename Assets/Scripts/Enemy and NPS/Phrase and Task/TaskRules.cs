@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +9,10 @@ namespace TopDownShooter
         [SerializeField]
         private GameObject _taskComplitePanel;
 
+        public int _killVampirePoint;
+
         [Header("Определитель номера миссии"), SerializeField]
-        private bool _isTask1;
-
-        [SerializeField]
-        private bool _isTask2;
-
-        [SerializeField]
-        private bool _isTask3;
+        private bool _isTask1, _isTask2, _isTask3;
 
         [SerializeField]
         private Toggle[] _taskTougle;
@@ -29,28 +24,33 @@ namespace TopDownShooter
         public void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<PlayerController>() == null) return;
-            
+
+            //CompliteFirstTask
             if (_isTask1 == true)
             {
                 _task1IsComplite = true;
                 _taskTougle[0].isOn = true;
                 StartCoroutine(TaskCompliteCoroutine());
+                this.GetComponent<BoxCollider>().enabled = false;
             }
 
+            //CompliteSecondTask
             if (_isTask2 == true)
             {
                 _task2IsComplite = true;
                 _taskTougle[1].isOn = true;
                 StartCoroutine(TaskCompliteCoroutine());
+                this.GetComponent<BoxCollider>().enabled = false;
             }
+        }
 
-            if (_isTask3 == true)
-            {
-                _task3IsComplite = true;
-                _taskTougle[2].isOn = true;
-                StartCoroutine(TaskCompliteCoroutine());
-            }
+        public void CompliteThirdTask()
+        {
 
+
+            _task3IsComplite = true;
+            _taskTougle[2].isOn = true;
+            StartCoroutine(TaskCompliteCoroutine());
         }
 
         private IEnumerator TaskCompliteCoroutine()

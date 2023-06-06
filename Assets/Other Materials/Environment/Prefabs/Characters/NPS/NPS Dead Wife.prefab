@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _taskComplitePanel: {fileID: 0}
+  _isTask1: 0
+  _isTask2: 1
+  _taskTougle: []
 --- !u!1001 &2113288555812149410
 PrefabInstance:
   m_ObjectHideFlags: 0

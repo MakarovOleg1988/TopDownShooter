@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TopDownShooter
 {
-    public class UIManager : MonoBehaviour, IEventManager
+    public class WeaponUIElement: MonoBehaviour, IEventManager
     {
         private PlayerController _playerController;
 
