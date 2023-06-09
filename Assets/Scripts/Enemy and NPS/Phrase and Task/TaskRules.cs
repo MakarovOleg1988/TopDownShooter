@@ -1,25 +1,49 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace TopDownShooter
 {
-    public class TaskRules : MonoBehaviour
+    public class TaskRules : MonoBehaviour,IEventManager
     {
         [SerializeField]
         private GameObject _taskComplitePanel;
 
-        public int _killVampirePoint;
+        [SerializeField]
+        private GameObject _winPanel;
+
+        [SerializeField]
+        private TextMeshProUGUI _currentkillVampirePointText, _maxkillVampirePointText;
 
         [Header("Определитель номера миссии"), SerializeField]
         private bool _isTask1, _isTask2, _isTask3;
 
         [SerializeField]
         private Toggle[] _taskTougle;
+        
+        [HideInInspector]
+        private int _maxkillVampirePoint = 3;
 
-        public bool _task1IsComplite { get; private set; }
-        public bool _task2IsComplite { get; private set; }
-        public bool _task3IsComplite { get; private set; }
+        [HideInInspector]
+        private int _currentkillVampirePoint;
+
+        public bool _task1IsComplite { get; set; }
+        public bool _task2IsComplite { get; set; }
+        public bool _task3IsComplite { get; set; }
+
+        private void Start()
+        {
+            IEventManager._onSetKillVampire += KillPointCalculation;
+
+            _maxkillVampirePointText.text = _maxkillVampirePoint.ToString();
+        }
+
+        private void LateUpdate()
+        {
+            CompliteThirdTask();
+            CompliteFirstMission();
+        }
 
         public void OnTriggerEnter(Collider other)
         {
@@ -44,13 +68,20 @@ namespace TopDownShooter
             }
         }
 
+        private void KillPointCalculation()
+        {
+            _currentkillVampirePoint++;
+            _currentkillVampirePointText.text = _currentkillVampirePoint.ToString();
+        }
+
         public void CompliteThirdTask()
         {
-
-
-            _task3IsComplite = true;
-            _taskTougle[2].isOn = true;
-            StartCoroutine(TaskCompliteCoroutine());
+            if (_currentkillVampirePoint >= _maxkillVampirePoint)
+            {
+                _task3IsComplite = true;
+                _taskTougle[2].isOn = true;
+                StartCoroutine(TaskCompliteCoroutine());
+            }
         }
 
         private IEnumerator TaskCompliteCoroutine()
@@ -58,6 +89,19 @@ namespace TopDownShooter
             _taskComplitePanel.SetActive(true);
             yield return new WaitForSeconds(2.5f);
             _taskComplitePanel.SetActive(false);
+        }
+
+        public void CompliteFirstMission()
+        {
+            if (_task1IsComplite == true && _task2IsComplite == true && _task3IsComplite == true)
+            {
+                _winPanel.SetActive(true);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            IEventManager._onSetKillVampire -= KillPointCalculation;
         }
     }
 }

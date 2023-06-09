@@ -280,10 +280,9 @@ GameObject:
   - component: {fileID: 7382031261976690591}
   - component: {fileID: 7382031261976690589}
   - component: {fileID: 7643361583074118582}
-  - component: {fileID: 1026315286657351345}
   m_Layer: 0
   m_Name: Vampire
-  m_TagString: Untagged
+  m_TagString: Vampire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,19 +375,9 @@ MonoBehaviour:
   _health: 3
   _attackRange: 1
   _chaseRange: 10
+  _currentkillVampirePoint: 0
+  _maxkillVampirePoint: 3
   _steps: []
---- !u!114 &1026315286657351345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7382031261976690561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7900a332ee4ac7c4a84768569133ce34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7382031262115713690
 GameObject:
   m_ObjectHideFlags: 0

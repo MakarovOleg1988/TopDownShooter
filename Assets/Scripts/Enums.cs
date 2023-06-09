@@ -17,6 +17,7 @@ namespace TopDownShooter
         Player,
         Citizen,
         Zombi,
-        Vampire
+        Vampire,
+        Spider
     }
 }

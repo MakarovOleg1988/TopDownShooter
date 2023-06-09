@@ -107,6 +107,14 @@ namespace TopDownShooter
                 enemyController.enabled = false;
 
                 StartCoroutine(SetDeathCoroutine());
+
+                switch (_unitType)
+                {
+                    case UnitType.Vampire:
+                        {
+                            IEventManager.SendSetKillVampire();
+                        } break;
+                }
             }
         }
 
@@ -141,6 +149,16 @@ namespace TopDownShooter
                         CurrentHealth = 3;
                         _attackRange = 1f;
                         _chaseRange = 10f;
+                    }; break;
+                case UnitType.Spider:
+                    {
+                        _speedMovement = 2f;
+                        _speedRunning = 2f;
+                        _speedRotation = 0.1f;
+                        _reloadSpeed = 0.5f;
+                        CurrentHealth = 3;
+                        _attackRange = 5f;
+                        _chaseRange = 6f;
                     }; break;
                 case UnitType.Player:
                     {
