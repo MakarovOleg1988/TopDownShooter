@@ -218,6 +218,8 @@ MonoBehaviour:
   _healthBar: {fileID: 0}
   _taskPanel: {fileID: 0}
   _losePanel: {fileID: 0}
+  _currentHealthText: {fileID: 0}
+  _maxHealthText: {fileID: 0}
 --- !u!114 &8277965495442907292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VintageRifle
       objectReference: {fileID: 0}
+    - target: {fileID: 7050214641404146466, guid: a134b640fbc03c44c8bdd736e436c0fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7682213458616953240, guid: a134b640fbc03c44c8bdd736e436c0fa, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -527,6 +533,10 @@ PrefabInstance:
     - target: {fileID: 8179429023145566419, guid: 5a12732368949924dbdae7164d9f363f, type: 3}
       propertyPath: m_Name
       value: Flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179429023145566419, guid: 5a12732368949924dbdae7164d9f363f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8184953909770475281, guid: 5a12732368949924dbdae7164d9f363f, type: 3}
       propertyPath: m_RootOrder
