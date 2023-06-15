@@ -33,16 +33,5 @@ namespace TopDownShooter
             Application.Quit();
 #endif
         }
-
-        public void BackToMainMenu()
-        {
-            StartCoroutine(BackToMainMenuCoroutine());
-        }
-
-        private IEnumerator BackToMainMenuCoroutine()
-        {
-            yield return new WaitForSeconds(0.2f);
-            SceneManager.LoadScene("MainMenu");
-        }
     }
 }

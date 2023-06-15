@@ -14,10 +14,10 @@ namespace TopDownShooter
         private Transform _container;
 
         [SerializeField] 
-        private int _minCapacity;
+        private short _minCapacity;
         
         [SerializeField] 
-        private int _maxCapacity;
+        private short _maxCapacity;
 
         private List<Projectile> _poolRevolver;
 
@@ -28,7 +28,7 @@ namespace TopDownShooter
         {
             if (_autoExpand)
             {
-                _maxCapacity = Int32.MaxValue;  
+                _maxCapacity = short.MaxValue;  
             }
         }
 

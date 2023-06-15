@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace TopDownShooter
 {
-    public class PoolForRifleProjectile : MonoBehaviour
+    public class PoolForSpittingVenomProjectile : MonoBehaviour
     {
         [SerializeField]
-        private Projectile _prefabRifle;
+        private Projectile _prefabVenom;
 
         [SerializeField] 
         private Transform _container;
@@ -18,7 +18,7 @@ namespace TopDownShooter
         [SerializeField] 
         private short _maxCapacity;
 
-        private List<Projectile> _poolRifle;
+        private List<Projectile> _poolVenom;
 
         [SerializeField]
         private bool _autoExpand;
@@ -38,7 +38,7 @@ namespace TopDownShooter
 
         private void CreatePool()
         {
-            _poolRifle = new List<Projectile>(_minCapacity);
+            _poolVenom = new List<Projectile>(_minCapacity);
 
             for (int i = 0; i < _minCapacity; i++)
             {
@@ -48,16 +48,16 @@ namespace TopDownShooter
 
         private Projectile CreateElement(bool isActiveByDefault = false)
         {
-            Projectile createdObject = Instantiate(_prefabRifle, _container);
+            Projectile createdObject = Instantiate(_prefabVenom, _container);
             createdObject.gameObject.SetActive(isActiveByDefault);
 
-            _poolRifle.Add(createdObject);
+            _poolVenom.Add(createdObject);
             return createdObject;
         }
 
         private bool TryGetElement(out Projectile element)
         {
-            foreach (var item in _poolRifle)
+            foreach (var item in _poolVenom)
             {
                 if (!item.gameObject.activeInHierarchy)
                 {
@@ -97,7 +97,7 @@ namespace TopDownShooter
                 return CreateElement(true);
             }
 
-            if (_poolRifle.Count < _maxCapacity)
+            if (_poolVenom.Count < _maxCapacity)
             {
                 return CreateElement(true);
             }

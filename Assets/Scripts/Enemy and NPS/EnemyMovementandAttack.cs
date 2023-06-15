@@ -8,7 +8,7 @@ namespace TopDownShooter
     public class EnemyMovementandAttack : EnemyParam, IDamageAble
     {
         private EnemyMovementandAttack enemyController;
-     
+
         private void OnValidate()
         {
             ChooseEnemy(_unitType);
@@ -19,11 +19,21 @@ namespace TopDownShooter
         {
             enemyController = GetComponent<EnemyMovementandAttack>();
 
+            switch (_unitType)
+            {
+                case UnitType.Spider:
+                    {
+                        _particleSystem = GetComponentInChildren<ParticleSystem>();
+                        _particleSystem.Stop();
+                    }
+                    break;
+            }
+
+            _poolForSpittingVenomProjectile = GetComponent<PoolForSpittingVenomProjectile>();
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             _anim = GetComponentInChildren<Animator>();
             CreatePatrolArea();
         }
-
 
         public void Update()
         {
@@ -64,30 +74,86 @@ namespace TopDownShooter
         {
             if (_player == null) return;
 
-            if (Distance <= _chaseRange)
+            switch (_unitType)
             {
-                _agent.speed = _speedRunning;
-                _agent.SetDestination(_player.position);
-                _anim.SetFloat("IsChasing", 1f);
-            }
+                case UnitType.Vampire:
+                    {
+                        if (Distance <= _chaseRange)
+                        {
+                            _agent.speed = _speedRunning;
+                            _agent.SetDestination(_player.position);
+                            _anim.SetFloat("IsChasing", 1f);
+                        }
 
-            else
-            {
-                _anim.SetFloat("IsChasing", 0f);
-                _agent.speed = _speedMovement;
+                        else
+                        {
+                            _anim.SetFloat("IsChasing", 0f);
+                            _agent.speed = _speedMovement;
+                        }
+                    } break;
+                case UnitType.Zombi:
+                    {
+                        if (Distance <= _chaseRange)
+                        {
+                            _agent.speed = _speedRunning;
+                            _agent.SetDestination(_player.position);
+                            _anim.SetFloat("IsChasing", 1f);
+                        }
+
+                        else
+                        {
+                            _anim.SetFloat("IsChasing", 0f);
+                            _agent.speed = _speedMovement;
+                        }
+                    } break;
+                case UnitType.Spider:
+                    {
+                        transform.LookAt(_player);
+                    } break;
             }
         }
 
         private void AttackEnemy(float Distance)
         {
-            if (Distance < _attackRange)
+            switch (_unitType)
             {
-                _anim.SetBool("IsAttack", true);
+                case UnitType.Vampire:
+                    {
+                        if (Distance < _attackRange) _anim.SetBool("IsAttack", true);
+                        else _anim.SetBool("IsAttack", false);
+                    }
+                    break;
+                case UnitType.Zombi:
+                    {
+                        if (Distance < _attackRange) _anim.SetBool("IsAttack", true);
+                        else _anim.SetBool("IsAttack", false);
+                    }
+                    break;
+                case UnitType.Spider:
+                    {
+                        if (Distance < _attackRange && _canShoot == true)
+                        {
+                            Vector3 positionFire = _targetFire.position;
+                            Quaternion rotationFire = _targetFire.rotation;
+
+                            _anim.SetBool("IsAttack", true);
+                            _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
+                            _particleSystem.Play();
+                            _canShoot = false;
+                        }
+                        else _anim.SetBool("IsAttack", false);
+
+                        StartCoroutine(TimerbetweenShootCoroutine());
+                    }
+                    break;
             }
-            else 
-            {
-                _anim.SetBool("IsAttack", false);
-            }
+        }
+
+        private IEnumerator TimerbetweenShootCoroutine()
+        {
+            yield return new WaitForSeconds(_reloadSpeed);
+            _particleSystem.Stop();
+            _canShoot = true;
         }
 
         public void ApplyDamage(int damage)
@@ -155,10 +221,10 @@ namespace TopDownShooter
                         _speedMovement = 2f;
                         _speedRunning = 2f;
                         _speedRotation = 0.1f;
-                        _reloadSpeed = 0.5f;
+                        _reloadSpeed = 1.5f;
                         CurrentHealth = 3;
                         _attackRange = 5f;
-                        _chaseRange = 6f;
+                        _chaseRange = 5f;
                     }; break;
                 case UnitType.Player:
                     {

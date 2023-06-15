@@ -180,6 +180,8 @@ namespace TopDownShooter
 
         public void ActiveFlashlight(CallbackContext context)
         {
+            if (haveFlashlight == false) return;
+
             if (FlashlightIsActive == true)
             {
                 IEventManager.SendSetActiveFlashlight();

@@ -53,6 +53,12 @@ namespace TopDownShooter
                     _speedMovementProjectile = 25;
                     _lifeTimeProjectile = 4;
                     }; break;
+                case ProjectileType.SpittingVenom:
+                    {
+                        _damage = 1;
+                        _speedMovementProjectile = 25;
+                        _lifeTimeProjectile = 4;
+                    }; break;
             }
         }
 
@@ -63,9 +69,12 @@ namespace TopDownShooter
                 enemy.ApplyDamage(_damage);
             }
 
+            else if (other.TryGetComponent<IDamageAblePlayer>(out var player))
+            {
+                player.ApplyDamagePlayer(_damage);
+            }
 
-
-            if (other.GetComponent<Collider>())
+            else if (other.GetComponent<Collider>())
             {
                 Debug.Log(other);
                 ReturnToPool();

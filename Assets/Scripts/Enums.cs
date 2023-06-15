@@ -3,7 +3,8 @@ namespace TopDownShooter
     public enum ProjectileType : byte
     {
         RevolverBullet,
-        RifleBullet
+        RifleBullet,
+        SpittingVenom
     }
 
     public enum WeaponType : byte

@@ -382,6 +382,7 @@ MonoBehaviour:
   _speedRotation: 0.1
   _reloadSpeed: 0.5
   _health: 1
+  _targetFire: {fileID: 7290497257833608053}
   _attackRange: 1
   _chaseRange: 6
   _steps:

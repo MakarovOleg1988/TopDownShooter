@@ -22,6 +22,7 @@ namespace TopDownShooter
         [SerializeField]
         protected GameObject _flashlight;
 
+        public bool haveFlashlight { get; set; } = false;
         public bool FlashlightIsActive { get; set; } = false;
         public bool TaskMenuIsActive { get; set; } = false;
         public bool _withRevolver = true;
@@ -30,7 +31,14 @@ namespace TopDownShooter
         public int _maxCapacityClipRevolver;
         public int _currentCapacityClipRifle;
         public int _maxCapacityClipRifle;
-        
+
+        private int _coins = 0;
+        public int CoinValue
+        {
+            get { return _coins; }
+            set { _coins = value; }
+        }
+
         [SerializeField]
         protected ParticleSystem[] _shootParticleSystem;
 
@@ -44,16 +52,9 @@ namespace TopDownShooter
         protected GameObject _losePanel;
 
         [SerializeField]
-        protected TextMeshProUGUI _currentHealthText;
+        public TextMeshProUGUI _currentHealthText;
 
         [SerializeField]
-        protected TextMeshProUGUI _maxHealthText;
-
-        private int _coins = 0;
-        public int CoinValue
-        {
-            get { return _coins; }
-            set { _coins = value; }
-        }
+        public TextMeshProUGUI _maxHealthText;
     }
 }

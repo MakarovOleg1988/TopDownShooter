@@ -5,12 +5,12 @@ namespace TopDownShooter
 {
     public class InteractionWithCoin : MonoBehaviour
     {
+        private PlayerParam _playerParam;
+
         private Rigidbody _rbCoin;
 
-        [SerializeField, Range(10, 50)]
+        [SerializeField, Range(10, 150)]
         private int _maxCapacityCoininBox;
-
-        private PlayerParam _playerParam; 
 
         [SerializeField]
         private TextMeshProUGUI _coinValueText;
@@ -18,7 +18,6 @@ namespace TopDownShooter
         private void Start()
         {
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
-
             _rbCoin = GetComponent<Rigidbody>();
             _coinValueText.text = _playerParam.CoinValue.ToString();
         }
@@ -27,7 +26,7 @@ namespace TopDownShooter
         {
             if (collision.gameObject.GetComponent<PlayerController>())
             {
-                int randomCoin = Random.Range(1, _maxCapacityCoininBox);
+                int randomCoin = Random.Range(100, _maxCapacityCoininBox);
                 _playerParam.CoinValue += randomCoin;
                 _coinValueText.text = _playerParam.CoinValue.ToString();
                 ReturnToPool();
