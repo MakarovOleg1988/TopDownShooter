@@ -133,17 +133,19 @@ namespace TopDownShooter
                     {
                         if (Distance < _attackRange && _canShoot == true)
                         {
+                            _canShoot = false;
                             Vector3 positionFire = _targetFire.position;
                             Quaternion rotationFire = _targetFire.rotation;
 
                             _anim.SetBool("IsAttack", true);
                             _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
                             _particleSystem.Play();
-                            _canShoot = false;
                         }
-                        else _anim.SetBool("IsAttack", false);
-
-                        StartCoroutine(TimerbetweenShootCoroutine());
+                        else
+                        {
+                            StartCoroutine(TimerbetweenShootCoroutine());
+                            _anim.SetBool("IsAttack", false);
+                        }
                     }
                     break;
             }
@@ -151,7 +153,7 @@ namespace TopDownShooter
 
         private IEnumerator TimerbetweenShootCoroutine()
         {
-            yield return new WaitForSeconds(_reloadSpeed);
+            yield return new WaitForSeconds(2.5f);
             _particleSystem.Stop();
             _canShoot = true;
         }
@@ -221,10 +223,10 @@ namespace TopDownShooter
                         _speedMovement = 2f;
                         _speedRunning = 2f;
                         _speedRotation = 0.1f;
-                        _reloadSpeed = 1.5f;
+                        _reloadSpeed = 2.5f;
                         CurrentHealth = 3;
-                        _attackRange = 5f;
-                        _chaseRange = 5f;
+                        _attackRange = 8f;
+                        _chaseRange = 8f;
                     }; break;
                 case UnitType.Player:
                     {

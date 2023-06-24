@@ -72,6 +72,7 @@ namespace TopDownShooter
             else if (other.TryGetComponent<IDamageAblePlayer>(out var player))
             {
                 player.ApplyDamagePlayer(_damage);
+                ReturnToPool();
             }
 
             else if (other.GetComponent<Collider>())

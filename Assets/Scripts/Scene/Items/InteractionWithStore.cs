@@ -1,10 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TopDownShooter
 {
     public class InteractionWithStore : MonoBehaviour
     {
+        [SerializeField]
+        private Button[] _buyButton; 
+        
         [SerializeField]
         private GameObject _StorePanel;
 
@@ -23,6 +27,11 @@ namespace TopDownShooter
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
         }
 
+        private void LateUpdate()
+        {
+            SetColorButton();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<PlayerController>())
@@ -39,9 +48,29 @@ namespace TopDownShooter
             }
         }
 
+        private void SetColorButton()
+        {
+            for (int i = 0; i < _buyButton.Length; i++)
+            {
+                if (_playerParam.CoinValue >= _storeItemData.costItem[i])
+                {
+                    _buyButton[i].interactable = true;
+                    var colors = _buyButton[i].colors;
+                    colors.normalColor = new Color(255, 255, 255, 150);
+                    _buyButton[i].colors = colors;
+                }
+                else
+                {
+                    _buyButton[i].interactable = false;
+                    var colors = _buyButton[i].colors;
+                    colors.normalColor = new Color(255, 255, 255, 50);
+                    _buyButton[i].colors = colors;
+                }
+            }
+        }
+
         public void BuyItem1()
         {
-
             if (_playerParam.CoinValue >= _storeItemData.costItem[0])
             {
                 _playerParam.CoinValue -= _storeItemData.costItem[0];
