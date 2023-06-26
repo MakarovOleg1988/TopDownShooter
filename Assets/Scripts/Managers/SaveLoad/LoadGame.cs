@@ -1,29 +1,26 @@
-﻿using UnityEngine;
-using System.Xml;
+﻿using System.Xml;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TopDownShooter
 {
     public class LoadGame : MonoBehaviour
     {
-        public int _coin;
-
         private string filePath = "Assets/Resources/XML/Save.xml";
 
-
-        public void Load()
+        public void TransferToNextLevel()
         {
-            XmlDocument xmlDocument = new XmlDocument();
+            XmlDocument xmlSave = new XmlDocument();
 
-            xmlDocument.Load(filePath);
+            xmlSave.Load(filePath);
 
-            XmlNode root = xmlDocument.SelectSingleNode("root");
+            XmlElement isLoadingElement = xmlSave.CreateElement("isLoading");
+            isLoadingElement.InnerText = "true";
+            xmlSave.DocumentElement.AppendChild(isLoadingElement);
 
-            XmlNode coinNode = root.SelectSingleNode("_coin");
-            if (coinNode != null)
-            {
-                int.TryParse(coinNode.InnerText, out _coin);
-            }
-            Debug.Log($"_coin: {_coin}");
+            xmlSave.Save(filePath);
+
+            SceneManager.LoadScene(1);
         }
     }
 }

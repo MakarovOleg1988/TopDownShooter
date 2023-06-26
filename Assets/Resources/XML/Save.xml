@@ -1,4 +1,7 @@
 <root>
-  <_coin>0</_coin>
-  <_task1IsComplite>False</_task1IsComplite>
+  <coin>0</coin>
+  <task1IsComplite>False</task1IsComplite>
+  <task2IsComplite>False</task2IsComplite>
+  <task3IsComplite>False</task3IsComplite>
+  <isLoading>true</isLoading>
 </root>

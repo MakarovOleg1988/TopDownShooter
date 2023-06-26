@@ -21,9 +21,9 @@ namespace TopDownShooter
         [SerializeField]
         private Image[] _spriteItem;
 
+
         private void Start()
         {
-
             SetDataItem();
         }
 

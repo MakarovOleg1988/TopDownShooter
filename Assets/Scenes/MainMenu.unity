@@ -2127,7 +2127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd6e75e950636741a847dcbd181d454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: 0
 --- !u!4 &460998421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4950086967037138, guid: 63e1976b906dbf24b9ae9d9335ef99a5, type: 3}
@@ -2722,7 +2721,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455208597}
         m_TargetAssemblyTypeName: TopDownShooter.LoadGame, Assembly-CSharp
-        m_MethodName: Load
+        m_MethodName: TransferToNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4348,7 +4347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 301}
   m_SizeDelta: {x: 900, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118803611

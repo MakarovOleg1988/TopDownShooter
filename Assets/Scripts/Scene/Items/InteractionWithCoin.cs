@@ -19,14 +19,13 @@ namespace TopDownShooter
         {
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
             _rbCoin = GetComponent<Rigidbody>();
-            _coinValueText.text = _playerParam.CoinValue.ToString();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.GetComponent<PlayerController>())
             {
-                int randomCoin = Random.Range(100, _maxCapacityCoininBox);
+                int randomCoin = Random.Range(_maxCapacityCoininBox - 1, _maxCapacityCoininBox);
                 _playerParam.CoinValue += randomCoin;
                 _coinValueText.text = _playerParam.CoinValue.ToString();
                 ReturnToPool();

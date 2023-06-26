@@ -17,25 +17,14 @@ namespace TopDownShooter
 
         private void Start()
         {
-            enemyController = GetComponent<EnemyMovementandAttack>();
-
-            switch (_unitType)
-            {
-                case UnitType.Spider:
-                    {
-                        _particleSystem = GetComponentInChildren<ParticleSystem>();
-                        _particleSystem.Stop();
-                    }
-                    break;
-            }
-
             _poolForSpittingVenomProjectile = GetComponent<PoolForSpittingVenomProjectile>();
+            enemyController = GetComponent<EnemyMovementandAttack>();
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             _anim = GetComponentInChildren<Animator>();
             CreatePatrolArea();
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             MovementEnemy(_steps);
             ChaseEnemy(Distance());
@@ -131,31 +120,24 @@ namespace TopDownShooter
                     break;
                 case UnitType.Spider:
                     {
-                        if (Distance < _attackRange && _canShoot == true)
+                        if (Distance < _attackRange && _reloadSpeed <= 0f)
                         {
-                            _canShoot = false;
                             Vector3 positionFire = _targetFire.position;
                             Quaternion rotationFire = _targetFire.rotation;
 
                             _anim.SetBool("IsAttack", true);
                             _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
-                            _particleSystem.Play();
+
+                            _reloadSpeed = 2.5f;
                         }
                         else
                         {
-                            StartCoroutine(TimerbetweenShootCoroutine());
+                            _reloadSpeed -= Time.deltaTime;
                             _anim.SetBool("IsAttack", false);
                         }
                     }
                     break;
             }
-        }
-
-        private IEnumerator TimerbetweenShootCoroutine()
-        {
-            yield return new WaitForSeconds(2.5f);
-            _particleSystem.Stop();
-            _canShoot = true;
         }
 
         public void ApplyDamage(int damage)

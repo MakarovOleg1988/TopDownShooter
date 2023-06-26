@@ -20,11 +20,8 @@ namespace TopDownShooter
         [SerializeField]
         protected List<Transform> _steps = new List<Transform>();
 
-        protected bool _canShoot;
-
         protected NavMeshAgent _agent;
         protected Transform _player;
-        protected ParticleSystem _particleSystem;
 
         public float Distance()
         {

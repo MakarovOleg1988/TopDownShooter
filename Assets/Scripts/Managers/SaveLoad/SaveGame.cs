@@ -28,13 +28,21 @@ namespace TopDownShooter
             XmlElement rootNode = xmlSave.CreateElement("root");
             xmlSave.AppendChild(rootNode);
 
-            XmlElement coinNode = xmlSave.CreateElement("_coin");
+            XmlElement coinNode = xmlSave.CreateElement("coin");
             coinNode.InnerText = _playerParam.CoinValue.ToString();
             rootNode.AppendChild(coinNode);
 
-            XmlElement taskNode1 = xmlSave.CreateElement("_task1IsComplite");
+            XmlElement taskNode1 = xmlSave.CreateElement("task1IsComplite");
             taskNode1.InnerText = taskRules._task1IsComplite.ToString();
             rootNode.AppendChild(taskNode1);
+
+            XmlElement taskNode2 = xmlSave.CreateElement("task2IsComplite");
+            taskNode2.InnerText = taskRules._task2IsComplite.ToString();
+            rootNode.AppendChild(taskNode2);
+
+            XmlElement taskNode3 = xmlSave.CreateElement("task3IsComplite");
+            taskNode3.InnerText = taskRules._task3IsComplite.ToString();
+            rootNode.AppendChild(taskNode3);
 
             xmlSave.Save(filePath);
 

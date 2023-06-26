@@ -75,11 +75,7 @@ namespace TopDownShooter
                 ReturnToPool();
             }
 
-            else if (other.GetComponent<Collider>())
-            {
-                Debug.Log(other);
-                ReturnToPool();
-            }
+            DestroyCoroutine();
         }
 
         private IEnumerator DestroyCoroutine()

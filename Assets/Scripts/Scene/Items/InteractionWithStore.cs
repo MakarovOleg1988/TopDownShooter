@@ -17,12 +17,14 @@ namespace TopDownShooter
 
         private PlayerParam _playerParam;
         private UnitParam _unitParam;
+        private PlayerController _playerController;
 
         [SerializeField]
         private TextMeshProUGUI _coinValueText;
 
         private void Start()
         {
+            _playerController = FindObjectOfType<PlayerController>();
             _unitParam = GameObject.FindGameObjectWithTag("Player").GetComponent<UnitParam>();
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
         }
@@ -36,16 +38,15 @@ namespace TopDownShooter
         {
             if (other.GetComponent<PlayerController>())
             {
+                _playerController.enabled = false;
                 _StorePanel.SetActive(true);
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        public void ExitStore()
         {
-            if (other.GetComponent<PlayerController>())
-            {
-                _StorePanel.SetActive(false);
-            }
+            _playerController.enabled = true;
+            _StorePanel.SetActive(false);
         }
 
         private void SetColorButton()

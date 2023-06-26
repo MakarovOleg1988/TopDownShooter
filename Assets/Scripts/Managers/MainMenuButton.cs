@@ -8,7 +8,6 @@ namespace TopDownShooter
     {
         public void StartGame()
         {
-            IEventManager.SendSetClickButton();
             StartCoroutine(StartGameCoroutine());
         }
 
@@ -20,7 +19,6 @@ namespace TopDownShooter
 
         public void ExitGame()
         {
-            IEventManager.SendSetClickButton();
             StartCoroutine(ExitCoroutine());
         }
 
