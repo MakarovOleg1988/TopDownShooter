@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Scene\Tools\DrawLine.cs" />
-    <Compile Include="Assets\Scripts\Enemy and NPS\NPSController.cs" />
+    <Compile Include="Assets\Scripts\Enemy and NPS\NPSMovementandActivity.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\Player\New Controls.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveLoad\SaveGame.cs" />
@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Managers\SaveLoad\LoadGame.cs" />
     <Compile Include="Assets\Scripts\Scene\Items\InteractionWithBoxs.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveLoad\BootsTrap.cs" />
+    <Compile Include="Assets\Scripts\Scene\BackgroundMusic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

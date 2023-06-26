@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace TopDownShooter
 {
-    public class InteractionWithBoxs : MonoBehaviour
+    public class InteractionWithBoxs : MonoBehaviour, IEventManager
     {
         private InteractionWithBoxs _interactionWithBoxs;
 
@@ -41,6 +41,7 @@ namespace TopDownShooter
             if (other.GetComponent<PlayerController>())
             {
                 _coins.SetActive(true);
+                IEventManager.SendSetMoneyDown();
                 _coins.AddComponent<Rigidbody>();
                 _coins.GetComponent<Rigidbody>().AddForce(Vector3.up * _pushSpeed, ForceMode.Impulse);
                 _icon.enabled = false;

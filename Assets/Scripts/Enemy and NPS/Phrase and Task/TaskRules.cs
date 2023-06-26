@@ -39,7 +39,7 @@ namespace TopDownShooter
             _maxkillVampirePointText.text = _maxkillVampirePoint.ToString();
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             CompliteThirdTask();
             CompliteFirstMission();
@@ -72,7 +72,7 @@ namespace TopDownShooter
         {
             _currentkillVampirePoint++;
             _currentkillVampirePointText.text = _currentkillVampirePoint.ToString();
-        }
+            }
 
         public void CompliteThirdTask()
         {

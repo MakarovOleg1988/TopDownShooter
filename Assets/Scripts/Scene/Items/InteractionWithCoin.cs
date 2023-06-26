@@ -25,7 +25,7 @@ namespace TopDownShooter
         {
             if (collision.gameObject.GetComponent<PlayerController>())
             {
-                int randomCoin = Random.Range(_maxCapacityCoininBox - 1, _maxCapacityCoininBox);
+                int randomCoin = Random.Range(10, _maxCapacityCoininBox);
                 _playerParam.CoinValue += randomCoin;
                 _coinValueText.text = _playerParam.CoinValue.ToString();
                 ReturnToPool();

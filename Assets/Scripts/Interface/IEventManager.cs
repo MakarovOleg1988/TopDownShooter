@@ -12,6 +12,10 @@ namespace TopDownShooter
         public static event Action _onSetReloadWeapon;
         public static event Action _onSetChangeWeapon;
         public static event Action _onSetClickButton;
+        public static event Action _onSetTakeDamageSpider;
+        public static event Action _onSetSpiderAttack;
+        public static event Action _onSetMoneyDown;
+
         public static event Action _onSetKillVampire;
 
         public static void SendSetShootRevolver()
@@ -52,6 +56,21 @@ namespace TopDownShooter
         public static void SendSetClickButton()
         {
             _onSetClickButton?.Invoke();
+        }
+
+        public static void SendSetTakeDamageSpider()
+        {
+            _onSetTakeDamageSpider?.Invoke();
+        }
+
+        public static void SendSetSetSpiderAttack()
+        {
+            _onSetSpiderAttack?.Invoke();
+        }
+
+        public static void SendSetMoneyDown()
+        {
+            _onSetMoneyDown?.Invoke();
         }
 
         public static void SendSetKillVampire()

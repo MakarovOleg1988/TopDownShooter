@@ -12,7 +12,6 @@ namespace TopDownShooter
         private void OnValidate()
         {
             ChooseEnemy(_unitType);
-            _agent = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
@@ -21,6 +20,7 @@ namespace TopDownShooter
             enemyController = GetComponent<EnemyMovementandAttack>();
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             _anim = GetComponentInChildren<Animator>();
+            _agent = GetComponent<NavMeshAgent>();
             CreatePatrolArea();
         }
 
@@ -126,6 +126,7 @@ namespace TopDownShooter
                             Quaternion rotationFire = _targetFire.rotation;
 
                             _anim.SetBool("IsAttack", true);
+                            IEventManager.SendSetSetSpiderAttack();
                             _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
 
                             _reloadSpeed = 2.5f;
@@ -143,9 +144,19 @@ namespace TopDownShooter
         public void ApplyDamage(int damage)
         {
             CurrentHealth -= damage;
-            IEventManager.SendSetDamageEnemy();
 
-            if (CurrentHealth > 0)
+            switch (_unitType)
+            {
+                case UnitType.Vampire: IEventManager.SendSetDamageEnemy();
+                    break;
+                case UnitType.Zombi:
+                    IEventManager.SendSetDamageEnemy();
+                    break;
+                case UnitType.Spider: IEventManager.SendSetTakeDamageSpider();
+                    break;
+            }
+
+                    if (CurrentHealth > 0)
             {
                 _anim.SetTrigger("GetDamage");
             }
@@ -182,33 +193,33 @@ namespace TopDownShooter
             {
                 case UnitType.Zombi:
                     {
-                        _speedMovement = 1f;
-                        _speedRunning = 2f;
-                        _speedRotation = 0.1f;
-                        _reloadSpeed = 0.5f;
-                        CurrentHealth = 1;
-                        _attackRange = 1f;
-                        _chaseRange = 6f;
-                    }; break;
-                case UnitType.Vampire:
-                    {
                         _speedMovement = 2f;
                         _speedRunning = 3f;
                         _speedRotation = 0.1f;
-                        _reloadSpeed = 0.2f;
-                        CurrentHealth = 3;
+                        _reloadSpeed = 0.5f;
+                        CurrentHealth = 4;
                         _attackRange = 1f;
-                        _chaseRange = 10f;
+                        _chaseRange = 8f;
+                    }; break;
+                case UnitType.Vampire:
+                    {
+                        _speedMovement = 3f;
+                        _speedRunning = 3f;
+                        _speedRotation = 0.1f;
+                        _reloadSpeed = 0.2f;
+                        CurrentHealth = 4;
+                        _attackRange = 1f;
+                        _chaseRange = 12f;
                     }; break;
                 case UnitType.Spider:
                     {
-                        _speedMovement = 2f;
-                        _speedRunning = 2f;
+                        _speedMovement = 3f;
+                        _speedRunning = 3f;
                         _speedRotation = 0.1f;
                         _reloadSpeed = 2.5f;
-                        CurrentHealth = 3;
-                        _attackRange = 8f;
-                        _chaseRange = 8f;
+                        CurrentHealth = 5;
+                        _attackRange = 10f;
+                        _chaseRange = 10f;
                     }; break;
                 case UnitType.Player:
                     {

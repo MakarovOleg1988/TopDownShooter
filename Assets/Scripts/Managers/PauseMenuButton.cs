@@ -49,6 +49,8 @@ namespace TopDownShooter
 
         public void BackToMainMenu()
         {
+            _playerController.enabled = true;
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
         }
     }

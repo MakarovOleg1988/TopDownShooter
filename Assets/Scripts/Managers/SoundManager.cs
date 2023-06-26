@@ -22,6 +22,15 @@ namespace TopDownShooter
         [SerializeField]
         private AudioSource _reloadRevolverSound;
 
+        [SerializeField]
+        private AudioSource _takeDamageSpiderSound;
+
+        [SerializeField]
+        private AudioSource _spiderAttackSound;
+
+        [SerializeField]
+        private AudioSource _moneyDownSound;
+
         private void Start()
         {
             IEventManager._onSetShootRevolver += SetShootRevolverSound;
@@ -30,6 +39,9 @@ namespace TopDownShooter
             IEventManager._onSetDamageEnemy += SetDamageEnemySound;
             IEventManager._onSetEmptyShootRevolver += SetEmptyShootRevolverSound;
             IEventManager._onSetReloadWeapon += SetReloadWeaponSound;
+            IEventManager._onSetTakeDamageSpider += SetTakeDamageSpiderSound;
+            IEventManager._onSetSpiderAttack += SetSpiderAttackSound;
+            IEventManager._onSetMoneyDown += SetSMoneyDownSound;
         }
 
         private void SetShootRevolverSound()
@@ -62,6 +74,21 @@ namespace TopDownShooter
             _reloadRevolverSound.Play();
         }
 
+        private void SetTakeDamageSpiderSound()
+        {
+            _takeDamageSpiderSound.Play();
+        }
+
+        private void SetSpiderAttackSound()
+        {
+            _spiderAttackSound.Play();
+        }
+
+        private void SetSMoneyDownSound()
+        {
+            _moneyDownSound.Play();
+        }
+
         private void OnDestroy()
         {
             IEventManager._onSetShootRevolver -= SetShootRevolverSound;
@@ -70,6 +97,9 @@ namespace TopDownShooter
             IEventManager._onSetDamageEnemy -= SetDamageEnemySound;
             IEventManager._onSetEmptyShootRevolver -= SetEmptyShootRevolverSound;
             IEventManager._onSetReloadWeapon -= SetReloadWeaponSound;
+            IEventManager._onSetTakeDamageSpider -= SetTakeDamageSpiderSound;
+            IEventManager._onSetSpiderAttack -= SetSpiderAttackSound;
+            IEventManager._onSetMoneyDown -= SetSMoneyDownSound;
         }
     }
 }

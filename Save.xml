@@ -1,0 +1,6 @@
+<root>
+  <coin>0</coin>
+  <task1IsComplite>False</task1IsComplite>
+  <task2IsComplite>True</task2IsComplite>
+  <task3IsComplite>True</task3IsComplite>
+</root>

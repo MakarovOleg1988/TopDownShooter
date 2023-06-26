@@ -9,7 +9,7 @@ namespace TopDownShooter
         
         private int _damage;
 
-        private void OnValidate()
+        private void Start()
         {
             ChooseEnemy(_unitType);
         }

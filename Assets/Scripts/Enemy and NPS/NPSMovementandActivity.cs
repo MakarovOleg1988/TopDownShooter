@@ -5,17 +5,17 @@ using UnityEngine.AI;
 namespace TopDownShooter
 {
     [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(NavMeshAgent))]
-    public class NPSController : NPSParam
+    public class NPSMovementandActivity : NPSParam
     {
         private void OnValidate()
         {
             ChooseUnit(_unitType);
-            _agent = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
         {
             _anim = GetComponentInChildren<Animator>();
+            _agent = GetComponent<NavMeshAgent>();
         }
 
         public void Update()

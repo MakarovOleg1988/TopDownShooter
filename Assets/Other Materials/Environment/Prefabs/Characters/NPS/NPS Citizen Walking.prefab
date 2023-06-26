@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 5016817149434081939}
   - component: {fileID: 5016817149434081938}
   - component: {fileID: 5016817149434081933}
-  - component: {fileID: 5016817149434081932}
+  - component: {fileID: 2016983819484995686}
   m_Layer: 0
   m_Name: NPS Citizen Walking
   m_TagString: Untagged
@@ -620,7 +620,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5016817149434081932
+--- !u!114 &2016983819484995686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
