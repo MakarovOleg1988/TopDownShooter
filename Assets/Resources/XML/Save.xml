@@ -1,8 +1,7 @@
 <root>
-  <coin>47</coin>
-  <task1IsComplite>True</task1IsComplite>
+  <coin>0</coin>
+  <task1IsComplite>False</task1IsComplite>
   <task2IsComplite>False</task2IsComplite>
-  <task3IsComplite>True</task3IsComplite>
-  <isLoading>true</isLoading>
-  <isLoading>true</isLoading>
+  <task3IsComplite>False</task3IsComplite>
+  <isLoading>False</isLoading>
 </root>

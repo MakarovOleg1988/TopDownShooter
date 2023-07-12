@@ -368,15 +368,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitType: 3
-  _speedMovement: 2
+  _speedMovement: 3
   _speedRunning: 3
   _speedRotation: 0.1
   _reloadSpeed: 0.2
-  _health: 3
+  _health: 4
   _targetFire: {fileID: 0}
   _attackRange: 1
-  _chaseRange: 10
+  _chaseRange: 12
   _steps: []
+  _colliderDamageTrigger: {fileID: 1534165372941845536}
 --- !u!1 &7382031262115713690
 GameObject:
   m_ObjectHideFlags: 0

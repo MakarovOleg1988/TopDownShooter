@@ -20,6 +20,9 @@ namespace TopDownShooter
         [SerializeField]
         protected List<Transform> _steps = new List<Transform>();
 
+        [SerializeField]
+        protected Collider _colliderDamageTrigger;
+
         protected NavMeshAgent _agent;
         protected Transform _player;
 

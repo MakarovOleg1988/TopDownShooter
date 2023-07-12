@@ -387,14 +387,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitType: 4
-  _speedMovement: 2
-  _speedRunning: 2
+  _speedMovement: 3
+  _speedRunning: 3
   _speedRotation: 0.1
   _reloadSpeed: 2.5
-  _health: 3
+  _health: 5
   _targetFire: {fileID: 4292885974475987869}
-  _attackRange: 8
-  _chaseRange: 8
+  _attackRange: 10
+  _chaseRange: 10
   _steps:
   - {fileID: 1318331355637897247}
   - {fileID: 9178316906496211977}
@@ -402,7 +402,7 @@ MonoBehaviour:
   - {fileID: 61996836276197678}
   - {fileID: 9164936713906871467}
   - {fileID: 2483349874392034632}
-  _canShoot: 1
+  _colliderDamageTrigger: {fileID: 1114690879901214846}
 --- !u!114 &2015441058092980429
 MonoBehaviour:
   m_ObjectHideFlags: 0

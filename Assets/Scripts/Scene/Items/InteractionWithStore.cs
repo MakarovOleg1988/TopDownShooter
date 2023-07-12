@@ -78,7 +78,7 @@ namespace TopDownShooter
                 _coinValueText.text = _playerParam.CoinValue.ToString();
 
                 _unitParam.CurrentHealth = _unitParam.MaxHealth;
-                _playerParam._currentHealthText.text = _unitParam.CurrentHealth.ToString();
+                _playerController.CheckCurrentHealth();
             }
         }
 
@@ -90,7 +90,7 @@ namespace TopDownShooter
                 _coinValueText.text = _playerParam.CoinValue.ToString();
 
                 _unitParam.MaxHealth += 2;
-                _playerParam._maxHealthText.text = _unitParam.MaxHealth.ToString();
+                _playerController.CheckCurrentHealth();
             }
         }
 

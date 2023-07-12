@@ -22,6 +22,9 @@ namespace TopDownShooter
         [SerializeField]
         protected GameObject _flashlight;
 
+        [SerializeField]
+        protected Canvas _miniMapCanvas;
+
         public bool haveFlashlight { get; set; } = false;
         public bool FlashlightIsActive { get; set; } = false;
         public bool TaskMenuIsActive { get; set; } = false;

@@ -166,6 +166,7 @@ namespace TopDownShooter
                 _anim.SetTrigger("IsDying");
                 _agent.speed = _speedMovement = 0f;
                 enemyController.enabled = false;
+                _colliderDamageTrigger.enabled = false;
 
                 StartCoroutine(SetDeathCoroutine());
 
@@ -194,7 +195,7 @@ namespace TopDownShooter
                 case UnitType.Zombi:
                     {
                         _speedMovement = 2f;
-                        _speedRunning = 3f;
+                        _speedRunning = 2f;
                         _speedRotation = 0.1f;
                         _reloadSpeed = 0.5f;
                         CurrentHealth = 4;

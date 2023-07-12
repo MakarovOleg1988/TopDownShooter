@@ -48,6 +48,7 @@ namespace TopDownShooter
             _playerController = GetComponent<PlayerController>();
             _anim = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
+            _miniMapCanvas = GetComponentInChildren<Canvas>();
         }
 
         private void Update()
@@ -201,11 +202,13 @@ namespace TopDownShooter
             if (TaskMenuIsActive == true)
             {
                 _taskPanel.SetActive(true);
+                _miniMapCanvas.enabled = true;
                 TaskMenuIsActive = false;
             }
             else if (TaskMenuIsActive == false)
             {
                 _taskPanel.SetActive(false);
+                _miniMapCanvas.enabled = false;
                 TaskMenuIsActive = true;
             }
         }
@@ -214,10 +217,9 @@ namespace TopDownShooter
         {
             if (CurrentHealth > 0)
             {
-                CurrentHealth -= damage;
-                _currentHealthText.text = CurrentHealth.ToString();
+                CurrentHealth -= damage;             
                 _anim.SetTrigger("GetDamage");
-                _healthBar.value = MaxHealth - CurrentHealth;
+                CheckCurrentHealth();
             }
 
             if (CurrentHealth <= 0)
@@ -225,6 +227,12 @@ namespace TopDownShooter
                 _anim.SetTrigger("IsDying");
                 StartCoroutine(SetDeathCoroutine());
             }
+        }
+
+        public void CheckCurrentHealth()
+        {
+            _currentHealthText.text = CurrentHealth.ToString();
+            _healthBar.value = MaxHealth - CurrentHealth;
         }
 
         private IEnumerator SetDeathCoroutine()
