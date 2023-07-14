@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Scene\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Scene\Camera\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDamageTrigger.cs" />
+    <Compile Include="Assets\Scripts\Scene\Items\ItemFrame.cs" />
     <Compile Include="Assets\Scripts\Scene\Tools\ShowGizmos.cs" />
     <Compile Include="Assets\Scripts\Scene\BackgroundMusic.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveLoad\BootsTrap.cs" />
