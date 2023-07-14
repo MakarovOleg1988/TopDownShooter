@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,13 @@ namespace TopDownShooter
         private GameObject _StorePanel;
 
         [SerializeField]
+        private GameObject _canvas;
+
+        [SerializeField]
         private StoreItemData _storeItemData;
 
+        private Camera _mainCamera;
+        private Transform _parent;
         private PlayerParam _playerParam;
         private UnitParam _unitParam;
         private PlayerController _playerController;
@@ -24,6 +30,9 @@ namespace TopDownShooter
 
         private void Start()
         {
+            _mainCamera = Camera.main;
+            _parent = GetComponentInParent<Transform>();
+
             _playerController = FindObjectOfType<PlayerController>();
             _unitParam = GameObject.FindGameObjectWithTag("Player").GetComponent<UnitParam>();
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
@@ -32,6 +41,13 @@ namespace TopDownShooter
         private void LateUpdate()
         {
             SetColorButton();
+            RotateStorePanel();
+        }
+
+        private void RotateStorePanel()
+        {
+            transform.position = _parent.transform.position;
+            _canvas.transform.rotation = _mainCamera.transform.rotation;
         }
 
         private void OnTriggerEnter(Collider other)

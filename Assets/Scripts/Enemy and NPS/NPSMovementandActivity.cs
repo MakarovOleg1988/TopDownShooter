@@ -16,10 +16,7 @@ namespace TopDownShooter
         {
             _anim = GetComponentInChildren<Animator>();
             _agent = GetComponent<NavMeshAgent>();
-        }
 
-        public void Update()
-        {
             MovementNPS(_steps);
         }
 
@@ -30,14 +27,24 @@ namespace TopDownShooter
 
         private IEnumerator MovementNPSCoroutine(Transform[] _steps)
         {
-            int random = Random.Range(0, _steps.Length - 1);
-
-            if (_agent.remainingDistance <= _agent.stoppingDistance)
+            while (true)
             {
-                _agent.speed = _speedMovement;
-                _agent.SetDestination(_steps[random].position);
-                _anim.SetBool("IsMoving", true);
-                yield return new WaitForSeconds(2f);
+                int random = Random.Range(0, _steps.Length - 1);
+
+                if (_findNextSteps == true)
+                {
+                    _agent.speed = _speedMovement;
+                    _agent.SetDestination(_steps[random].position);
+                    _findNextSteps = false;
+                    _anim.SetBool("IsMoving", true);
+                    yield return new WaitForSeconds(_timer);
+                }
+                else
+                {
+                    _anim.SetBool("IsMoving", false);
+                    _findNextSteps = true;
+                    yield return new WaitForSeconds(_timer);
+                }
             }
         }
 
