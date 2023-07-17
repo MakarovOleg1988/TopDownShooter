@@ -21,6 +21,11 @@ namespace TopDownShooter
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             _anim = GetComponentInChildren<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+
+            MaxHealth = CurrentHealth;
+            _enemyhealthBar.value = MaxHealth - CurrentHealth;
+            _enemyhealthBar.maxValue = MaxHealth;
+
             CreatePatrolArea();
         }
 
@@ -156,9 +161,10 @@ namespace TopDownShooter
                     break;
             }
 
-                    if (CurrentHealth > 0)
+            if (CurrentHealth > 0)
             {
                 _anim.SetTrigger("GetDamage");
+                CheckCurrentHealth();
             }
 
             if (CurrentHealth <= 0)
@@ -178,6 +184,11 @@ namespace TopDownShooter
                         } break;
                 }
             }
+        }
+
+        public void CheckCurrentHealth()
+        {
+            _enemyhealthBar.value = MaxHealth - CurrentHealth;
         }
 
         private IEnumerator SetDeathCoroutine()

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace TopDownShooter
 {
@@ -10,6 +11,9 @@ namespace TopDownShooter
 
         [SerializeField]
         protected Transform _targetFire;
+
+        [SerializeField]
+        protected Slider _enemyhealthBar;
 
         [SerializeField, Range(0.5f, 4f), Tooltip("Дистанция рукопашной атаки")]
         protected float _attackRange;
