@@ -34,7 +34,7 @@ namespace TopDownShooter
 
         private void ReturnToPool()
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
             transform.position = Vector3.zero;
             transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             _rbCoin.velocity = Vector3.zero;

@@ -174,6 +174,8 @@ namespace TopDownShooter
                 enemyController.enabled = false;
                 _colliderDamageTrigger.enabled = false;
 
+                CheckCurrentHealth();
+
                 StartCoroutine(SetDeathCoroutine());
 
                 switch (_unitType)

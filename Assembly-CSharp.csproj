@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Managers\WeaponUIElement.cs" />
     <Compile Include="Assets\Scripts\Enemy and NPS\Phrase and Task\PhraseData.cs" />
     <Compile Include="Assets\Scripts\Param\NPSParam.cs" />
+    <Compile Include="Assets\Scripts\Enemy and NPS\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\Param\PointParam.cs" />
     <Compile Include="Assets\Scripts\Enemy and NPS\EnemyMovementandAttack.cs" />
     <Compile Include="Assets\Scripts\Scene\Projectile\PoolForRevolverProjectile.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Assets\Scripts\Scene\Projectile\PoolForSpittingVenomProjectile.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveLoad\LoadGame.cs" />
     <Compile Include="Assets\Scripts\Scene\Items\InteractionWithBoxs.cs" />
-    <Compile Include="Assets\Scripts\Enemy and NPS\EnemyHealthBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -5,8 +5,6 @@ namespace TopDownShooter
 {
     public class InteractionWithBoxs : MonoBehaviour, IEventManager
     {
-        private InteractionWithBoxs _interactionWithBoxs;
-
         [SerializeField]
         private GameObject _coins;
 
@@ -21,7 +19,6 @@ namespace TopDownShooter
 
         private void Start()
         {
-            _interactionWithBoxs = GetComponent<InteractionWithBoxs>();
             _canvas = GetComponentInChildren<Canvas>();
             _mainCamera = Camera.main;
         }
@@ -45,7 +42,7 @@ namespace TopDownShooter
                 _coins.AddComponent<Rigidbody>();
                 _coins.GetComponent<Rigidbody>().AddForce(Vector3.up * _pushSpeed, ForceMode.Impulse);
                 _icon.enabled = false;
-                _interactionWithBoxs.enabled = false;
+                this.gameObject.SetActive(false);
             }
         }
     }
