@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Scene\Projectile\PoolForSpittingVenomProjectile.cs" />
     <Compile Include="Assets\Scripts\Managers\SaveLoad\LoadGame.cs" />
     <Compile Include="Assets\Scripts\Scene\Items\InteractionWithBoxs.cs" />
+    <Compile Include="Assets\Scripts\Scene\Camera\MiniMapCameraMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

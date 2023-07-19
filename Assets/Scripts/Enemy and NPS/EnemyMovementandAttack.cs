@@ -104,6 +104,11 @@ namespace TopDownShooter
                     {
                         transform.LookAt(_player);
                     } break;
+                case UnitType.QueenSpider:
+                    {
+                        transform.LookAt(_player);
+                    }
+                    break;
             }
         }
 
@@ -125,13 +130,13 @@ namespace TopDownShooter
                     break;
                 case UnitType.Spider:
                     {
-                        if (Distance < _attackRange && _reloadSpeed <= 0f)
+                        if (Distance <= _attackRange && _reloadSpeed <= 0f)
                         {
                             Vector3 positionFire = _targetFire.position;
                             Quaternion rotationFire = _targetFire.rotation;
 
                             _anim.SetBool("IsAttack", true);
-                            IEventManager.SendSetSetSpiderAttack();
+                            IEventManager.SendSetSpiderAttack();
                             _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
 
                             _reloadSpeed = 2.5f;
@@ -140,6 +145,32 @@ namespace TopDownShooter
                         {
                             _reloadSpeed -= Time.deltaTime;
                             _anim.SetBool("IsAttack", false);
+                        }
+                    }
+                    break;
+                case UnitType.QueenSpider:
+                    {
+                        if (Distance <= _attackRange && _reloadSpeed <= 0f && Distance >= _meleeAttackRange)
+                        {
+                            Vector3 positionFire = _targetFire.position;
+                            Quaternion rotationFire = _targetFire.rotation;
+
+                            _anim.SetBool("IsAttack", true);
+                            IEventManager.SendSetSpiderAttack();
+                            _poolForSpittingVenomProjectile.GetFreeElement(positionFire, rotationFire);
+
+                            _reloadSpeed = 2.5f;
+                        }
+                        else if (Distance <= _attackRange && _reloadSpeed <= 0f && Distance <= _meleeAttackRange)
+                        {
+                            _anim.SetBool("IsMeleeAttack", true);
+                            IEventManager.SendSetSpiderMeleeAttack();
+                        }
+                        else
+                        {
+                            _reloadSpeed -= Time.deltaTime;
+                            _anim.SetBool("IsAttack", false);
+                            _anim.SetBool("IsMeleeAttack", false);
                         }
                     }
                     break;
@@ -158,6 +189,9 @@ namespace TopDownShooter
                     IEventManager.SendSetDamageEnemy();
                     break;
                 case UnitType.Spider: IEventManager.SendSetTakeDamageSpider();
+                    break;
+                case UnitType.QueenSpider:
+                    IEventManager.SendSetTakeDamageSpider();
                     break;
             }
 
@@ -250,6 +284,17 @@ namespace TopDownShooter
                         _speedRotation = 0.1f;
                         _reloadSpeed = 0.2f;
                         CurrentHealth = 4;
+                    }; break;
+                case UnitType.QueenSpider:
+                    {
+                        _speedMovement = 2f;
+                        _speedRunning = 2f;
+                        _speedRotation = 0.1f;
+                        _reloadSpeed = 2.5f;
+                        CurrentHealth = 10;
+                        _attackRange = 10f;
+                        _chaseRange = 10f;
+                        _meleeAttackRange = 2f;
                     }; break;
             }
         }

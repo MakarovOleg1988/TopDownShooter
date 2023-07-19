@@ -18,6 +18,9 @@ namespace TopDownShooter
         [SerializeField, Range(0.5f, 4f), Tooltip("Дистанция рукопашной атаки")]
         protected float _attackRange;
 
+        [SerializeField, Range(0.5f, 4f), Tooltip("Дистанция рукопашной атаки")]
+        protected float _meleeAttackRange = 0;
+
         [SerializeField, Range(1f, 20f), Tooltip("Дистанция преследования игрока")]
         protected float _chaseRange;
 

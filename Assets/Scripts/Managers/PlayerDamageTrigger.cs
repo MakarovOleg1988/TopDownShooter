@@ -38,6 +38,10 @@ namespace TopDownShooter
                     {
                         _damage = 3;
                     }; break;
+                case UnitType.QueenSpider:
+                    {
+                        _damage = 1;
+                    }; break;
             }
         }
 

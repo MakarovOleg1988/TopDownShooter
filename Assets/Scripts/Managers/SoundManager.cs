@@ -29,6 +29,9 @@ namespace TopDownShooter
         private AudioSource _spiderAttackSound;
 
         [SerializeField]
+        private AudioSource _spiderMeleeAttackSound;
+
+        [SerializeField]
         private AudioSource _moneyDownSound;
 
         private void Start()
@@ -41,6 +44,7 @@ namespace TopDownShooter
             IEventManager._onSetReloadWeapon += SetReloadWeaponSound;
             IEventManager._onSetTakeDamageSpider += SetTakeDamageSpiderSound;
             IEventManager._onSetSpiderAttack += SetSpiderAttackSound;
+            IEventManager._onSetSpiderMeleeAttack += SetSpiderAttackMeleeSound;
             IEventManager._onSetMoneyDown += SetSMoneyDownSound;
         }
 
@@ -84,6 +88,11 @@ namespace TopDownShooter
             _spiderAttackSound.Play();
         }
 
+        private void SetSpiderAttackMeleeSound()
+        {
+            _spiderMeleeAttackSound.Play();
+        }
+
         private void SetSMoneyDownSound()
         {
             _moneyDownSound.Play();
@@ -99,6 +108,7 @@ namespace TopDownShooter
             IEventManager._onSetReloadWeapon -= SetReloadWeaponSound;
             IEventManager._onSetTakeDamageSpider -= SetTakeDamageSpiderSound;
             IEventManager._onSetSpiderAttack -= SetSpiderAttackSound;
+            IEventManager._onSetSpiderMeleeAttack -= SetSpiderAttackMeleeSound;
             IEventManager._onSetMoneyDown -= SetSMoneyDownSound;
         }
     }

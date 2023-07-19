@@ -14,6 +14,7 @@ namespace TopDownShooter
         public static event Action _onSetClickButton;
         public static event Action _onSetTakeDamageSpider;
         public static event Action _onSetSpiderAttack;
+        public static event Action _onSetSpiderMeleeAttack;
         public static event Action _onSetMoneyDown;
 
         public static event Action _onSetKillVampire;
@@ -63,9 +64,14 @@ namespace TopDownShooter
             _onSetTakeDamageSpider?.Invoke();
         }
 
-        public static void SendSetSetSpiderAttack()
+        public static void SendSetSpiderAttack()
         {
             _onSetSpiderAttack?.Invoke();
+        }
+
+        public static void SendSetSpiderMeleeAttack()
+        {
+            _onSetSpiderMeleeAttack?.Invoke();
         }
 
         public static void SendSetMoneyDown()
