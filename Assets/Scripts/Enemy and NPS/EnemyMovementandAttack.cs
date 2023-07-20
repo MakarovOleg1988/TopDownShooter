@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +22,7 @@ namespace TopDownShooter
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             _anim = GetComponentInChildren<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+            _canvas = GetComponentInChildren<Canvas>();
 
             MaxHealth = CurrentHealth;
             _enemyhealthBar.value = MaxHealth - CurrentHealth;
@@ -209,6 +211,8 @@ namespace TopDownShooter
                 _colliderDamageTrigger.enabled = false;
 
                 CheckCurrentHealth();
+
+                _canvas.enabled = false;
 
                 StartCoroutine(SetDeathCoroutine());
 

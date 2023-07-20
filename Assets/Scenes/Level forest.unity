@@ -54007,6 +54007,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1102813461}
     - target: {fileID: 5708918893697171243, guid: 2c81faa6ababfe24e9e9276bbe99685f, type: 3}
+      propertyPath: _miniMapCanvas
+      value: 
+      objectReference: {fileID: 389269111}
+    - target: {fileID: 5708918893697171243, guid: 2c81faa6ababfe24e9e9276bbe99685f, type: 3}
       propertyPath: _speedMovement
       value: 3
       objectReference: {fileID: 0}

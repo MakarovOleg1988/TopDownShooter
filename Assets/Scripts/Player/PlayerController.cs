@@ -48,7 +48,6 @@ namespace TopDownShooter
             _playerController = GetComponent<PlayerController>();
             _anim = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
-            _miniMapCanvas = GetComponentInChildren<Canvas>();
         }
 
         private void Update()

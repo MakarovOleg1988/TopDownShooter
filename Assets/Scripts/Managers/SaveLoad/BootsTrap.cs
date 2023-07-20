@@ -23,19 +23,24 @@ namespace TopDownShooter
         private bool task2IsComplite;
         private bool task3IsComplite;
 
-        private string filePath = "Assets/Resources/XML/Save.xml";
+        private string filePath;
 
         private void OnValidate()
         {
             _playerParam = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParam>();
             _taskRules = FindObjectsOfType<TaskRules>();
 
-            
             LoadData();
         }
 
         public void LoadData()
         {
+#if UNITY_EDITOR
+            filePath = "Assets/Resources/XML/Save.xml";
+#elif UNITY_STANDALONE_WIN && !UNITY_EDITOR  
+            filePath = "Save.xml";
+#endif
+
             XmlDocument xmlDocument = new XmlDocument();
 
             xmlDocument.Load(filePath);

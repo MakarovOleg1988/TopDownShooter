@@ -12,6 +12,8 @@ namespace TopDownShooter
         [SerializeField]
         protected Transform _targetFire;
 
+        protected Canvas _canvas;
+
         [SerializeField]
         protected Slider _enemyhealthBar;
 

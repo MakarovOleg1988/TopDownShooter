@@ -13,7 +13,7 @@ namespace TopDownShooter
         private PlayerParam _playerParam;
         private TaskRules taskRules;
 
-        private string filePath = "Assets/Resources/XML/Save.xml";
+        private string filePath;
 
         private void Start()
         {
@@ -23,6 +23,12 @@ namespace TopDownShooter
 
         public void Save()
         {
+#if UNITY_EDITOR
+            filePath = "Assets/Resources/XML/Save.xml";
+#elif UNITY_STANDALONE_WIN && !UNITY_EDITOR  
+            filePath = "Save.xml";
+#endif
+
             XmlDocument xmlSave = new XmlDocument();
 
             XmlElement rootNode = xmlSave.CreateElement("root");
